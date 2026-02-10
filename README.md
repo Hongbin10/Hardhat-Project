@@ -11,3 +11,10 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
+# Example commands
+
+Initialize the Hardhat project
+Creates the project structure, sample contract, and configuration file.
+```shell
+npx hardhat
+```
