@@ -35,26 +35,39 @@ Opens an interactive console connected to the local blockchain.
 ```shell
 npx hardhat console --network localhost
 ```
+![hardhat-console.png](pics/hardhat-console.png)
+
 Get a test account (Hardhat console)
 Retrieves the first test account to deploy and send transactions.
 ```shell
 const [owner] = await ethers.getSigners()
 ```
+![get-test-account.png](pics/get-test-account.png)
+![block-chain-test-account.png](pics/block-chain-test-account.png)   
+
 Set an unlock time
 Creates a timestamp 60 seconds in the future.
 ```shell
 const unlockTime = Math.floor(Date.now() / 1000) + 60
 ```
+![set-unlock-time.png](pics/set-unlock-time.png)
+
 Create contract factory
 Loads the compiled Lock contract.
 ```shell
 const Lock = await ethers.getContractFactory("Lock")
 ```
+![create-contract-factory.png](pics/create-contract-factory.png)
+![block-chain-contract-factory.png](pics/block-chain-contract-factory.png)
+
 Deploy the contract and send Ether
 Deploys the contract and sends 1 ETH to it.
 ```shell
 const lock = await Lock.deploy(unlockTime, { value: ethers.parseEther("1") })
 ```
+![deploy-contract.png](pics/deploy-contract.png)
+![block-chain-deploy-and-send.png](pics/block-chain-deploy-and-send.png)
+
 Read contract state
 Calls read-only functions to check stored values.
 ```shell
