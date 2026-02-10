@@ -43,7 +43,7 @@ Retrieves the first test account to deploy and send transactions.
 ```shell
 const [owner] = await ethers.getSigners()
 ```
-Returning undefined is a feature of assignment statements; in fact, the owner variable is already ready.
+Returning undefined is a feature of assignment statements; in fact, the owner variable is already ready.<br>
 ![get-test-account.png](pics/get-test-account.png) 
 ![owner.png](pics/owner.png)
 
