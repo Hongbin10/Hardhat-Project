@@ -28,7 +28,7 @@ Starts a local Ethereum network with pre-funded test accounts.
 ```shell
 npx hardhat node
 ``` 
-Return 20 accounts 
+Return 20 accounts <br>
 ![hardhat-node.png](pics/hardhat-node.png)
 
 Open the Hardhat console (new terminal)
@@ -48,6 +48,7 @@ Returning undefined is a feature of assignment statements; in fact, the owner va
 ![owner.png](pics/owner.png)
 
 block chain log proof：eth_accounts asks the node "which accounts are there", hardhat_metadata checks the detailed information and finds the metadata of 20 accounts
+
 ![block-chain-test-account.png](pics/block-chain-test-account.png)
 
 Set an unlock time
@@ -63,6 +64,7 @@ Loads the compiled Lock contract.
 const Lock = await ethers.getContractFactory("Lock")
 ```
 This step is telling Hardhat: "I want to deploy the Lock contract. Please prepare the ABI, Bytecode and Signer information."
+
 ![create-contract-factory.png](pics/create-contract-factory.png)
 
 Blockchain log: Check the node to obtain Signer information, including address, public key, balance, etc.
