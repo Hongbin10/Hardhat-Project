@@ -47,8 +47,7 @@ Returning undefined is a feature of assignment statements; in fact, the owner va
 ![get-test-account.png](pics/get-test-account.png) 
 ![owner.png](pics/owner.png)
 
-block chain log proof：eth_accounts asks the node "which accounts are there", hardhat_metadata checks the detailed information and finds the metadata of 20 accounts
-
+block chain log proof：eth_accounts asks the node "which accounts are there", hardhat_metadata checks the detailed information and finds the metadata of 20 accounts.<br>
 ![block-chain-test-account.png](pics/block-chain-test-account.png)
 
 Set an unlock time
@@ -67,7 +66,7 @@ This step is telling Hardhat: "I want to deploy the Lock contract. Please prepar
 
 ![create-contract-factory.png](pics/create-contract-factory.png)
 
-Blockchain log: Check the node to obtain Signer information, including address, public key, balance, etc.
+Blockchain log: Check the node to obtain Signer information, including address, public key, balance, etc.<br>
 ![block-chain-contract-factory.png](pics/block-chain-contract-factory.png)
 
 Deploy the contract and send Ether
@@ -78,7 +77,7 @@ const lock = await Lock.deploy(unlockTime, { value: ethers.parseEther("1") })
 The deployment transaction has been submitted, but the contract instance is not fully ready.
 ![deploy-contract.png](pics/deploy-contract.png)
 
-Blockchain log proof: The complete execution record of deploying the transaction, proving that the contract has been successfully created and put on the chain.
+Blockchain log proof: The complete execution record of deploying the transaction, proving that the contract has been successfully created and put on the chain.<br>
 ![block-chain-contract.png](pics/block-chain-contract.png)
 
 
@@ -88,7 +87,7 @@ await lock.waitForDeployment()
 Return the contract instance, allowing users to continue calling the contract's functions, such as querying the contract owner, querying the unlock time, etc.
 ![等待部署.png](pics/等待部署.png)
 
-Blockchain log proof: Return the one-time receipt for this transaction.
+Blockchain log proof: Return the one-time receipt for this transaction. <br>
 ![确认交易上链.png](pics/确认交易上链.png)
 
 Read contract state
