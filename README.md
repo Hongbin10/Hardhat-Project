@@ -28,9 +28,8 @@ Starts a local Ethereum network with pre-funded test accounts.
 ```shell
 npx hardhat node
 ``` 
-![hardhat-node.png](pics/hardhat-node.png)
-
 Return 20 accounts 
+![hardhat-node.png](pics/hardhat-node.png)
 
 Open the Hardhat console (new terminal)
 Opens an interactive console connected to the local blockchain.
@@ -44,12 +43,12 @@ Retrieves the first test account to deploy and send transactions.
 ```shell
 const [owner] = await ethers.getSigners()
 ```
-![get-test-account.png](pics/get-test-account.png) 
 Returning undefined is a feature of assignment statements; in fact, the owner variable is already ready.
+![get-test-account.png](pics/get-test-account.png) 
 ![owner.png](pics/owner.png)
 
-![block-chain-test-account.png](pics/block-chain-test-account.png)
 block chain log proof：eth_accounts asks the node "which accounts are there", hardhat_metadata checks the detailed information and finds the metadata of 20 accounts
+![block-chain-test-account.png](pics/block-chain-test-account.png)
 
 Set an unlock time
 Creates a timestamp 60 seconds in the future.
@@ -63,49 +62,48 @@ Loads the compiled Lock contract.
 ```shell
 const Lock = await ethers.getContractFactory("Lock")
 ```
-![create-contract-factory.png](pics/create-contract-factory.png)
 This step is telling Hardhat: "I want to deploy the Lock contract. Please prepare the ABI, Bytecode and Signer information."
+![create-contract-factory.png](pics/create-contract-factory.png)
 
-![block-chain-contract-factory.png](pics/block-chain-contract-factory.png)
 Blockchain log: Check the node to obtain Signer information, including address, public key, balance, etc.
+![block-chain-contract-factory.png](pics/block-chain-contract-factory.png)
 
 Deploy the contract and send Ether
 Deploys the contract and sends 1 ETH to it.
 ```shell
 const lock = await Lock.deploy(unlockTime, { value: ethers.parseEther("1") })
 ```
-
-![deploy-contract.png](pics/deploy-contract.png)
 The deployment transaction has been submitted, but the contract instance is not fully ready.
+![deploy-contract.png](pics/deploy-contract.png)
 
-![block-chain-contract.png](pics/block-chain-contract.png)
 Blockchain log proof: The complete execution record of deploying the transaction, proving that the contract has been successfully created and put on the chain.
+![block-chain-contract.png](pics/block-chain-contract.png)
+
 
 ```shell
 await lock.waitForDeployment()
 ```
-![等待部署.png](pics/等待部署.png)
 Return the contract instance, allowing users to continue calling the contract's functions, such as querying the contract owner, querying the unlock time, etc.
+![等待部署.png](pics/等待部署.png)
 
-![确认交易上链.png](pics/确认交易上链.png)
 Blockchain log proof: Return the one-time receipt for this transaction.
+![确认交易上链.png](pics/确认交易上链.png)
 
 Read contract state
 Calls read-only functions to check stored values.
 ```shell
 await lock.owner()
 ```
-![查合约所有者.png](pics/查合约所有者.png)
 Query the current contract owner and return the address when the contract was deployed.
+![查合约所有者.png](pics/查合约所有者.png)
 
 ![节点日志.png](pics/节点日志.png)
 
 ```shell
 await lock.unlockTime()
 ```
-![下一次的解锁时间戳.png](pics/下一次的解锁时间戳.png)
-
 Query the next unlock time and return the timestamp when the contract was deployed.
+![下一次的解锁时间戳.png](pics/下一次的解锁时间戳.png)
 
 ![区块链日志.png](pics/区块链日志.png)
 
@@ -114,11 +112,11 @@ Withdraws funds after the unlock time has passed.
 ```shell
 await lock.withdraw()
 ```
-![取款.png](pics/取款.png)
 Withdraw the locked funds to the contract owner's address.
+![取款.png](pics/取款.png)
 
-![取款日志.png](pics/取款日志.png)
 Withdrawal log: Check the node to obtain the transaction record of the withdrawal.
+![取款日志.png](pics/取款日志.png)
 
 Exit the Hardhat console
 Leaves the Hardhat interactive console.
